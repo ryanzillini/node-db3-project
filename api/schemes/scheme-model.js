@@ -179,7 +179,7 @@ function addStep(scheme_id, step) {
     .insert({ ...step, scheme_id })
     .then(() => {
       return db("steps as st")
-        .join("schemes as sc", "sc.scheme_id", "st.schemes_id")
+        .join("schemes as sc", "sc.scheme_id", "st.scheme_id")
         .select("step_id", "step_number", "instructions", "scheme_name")
         .orderBy("step_number")
         .where("st.scheme_id", scheme_id);
